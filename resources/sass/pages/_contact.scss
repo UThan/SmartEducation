@@ -1,0 +1,83 @@
+.contact {
+  margin: 8rem auto;
+
+  & > div {
+    border-radius: 0.5rem;
+    border: 1px solid $gray-400;
+    padding: 2rem;
+    color: $gray-800;
+    margin-bottom: 2rem;
+  }
+
+  &__address {
+    background-color: $gray-100;
+    h3 {
+      margin-bottom: 2rem;
+    }
+
+    p {
+      line-height: 1.2;
+      i {
+        margin: 0 1rem;
+        color: $primary;
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: $primary;
+  }
+
+  &__form {
+    color: $gray-100;
+    flex: 0 0 50%;
+    padding-right: 4rem;
+
+    @include device(tab-port) {
+      flex: 0 0 100%;
+      margin-bottom: 2rem;
+      padding-right: 2rem;
+    }
+    p {
+      margin-left: 1rem;
+    }
+
+    form {
+      margin-left: 1rem;
+
+      input,
+      textarea {
+        border-radius: 0.5rem;
+        margin-bottom: 1.5rem;
+        padding: 0.7rem 1rem;
+      }
+
+      input::placeholder {
+        color: $primary;
+      }
+
+      button {
+        padding: 0.7rem 1.5rem;
+        border-radius: 0.5rem;
+      }
+    }
+  }
+
+  &__map {
+    flex: 0 0 50%;
+
+    @include device(tab-port) {
+      flex: 0 0 100%;
+      padding: 2rem;
+      height: 50rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

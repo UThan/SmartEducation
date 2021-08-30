@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -22,6 +23,13 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+
+        $me = new User;
+        $me->name = 'Yu Than';
+        $me->email = 'yuthan@gmail.com';
+        $me->password = '$2y$10$9UKrGdXT7iKESHESIhxMEurk8EH87qW2UEbQVj4X1bqkOSOgRvI2K';
+        $me->save();
     }
 
     /**

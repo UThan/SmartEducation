@@ -1,8 +1,15 @@
 /node_modules
 /public/hot
 /public/storage
+/public/plugins
+/public/js
+/public/css
+/public/fonts
+/public/images
 /storage/*.key
 /vendor
+/SmartEducationV1
+/admin-lte
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml

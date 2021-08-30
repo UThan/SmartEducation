@@ -11,7 +11,10 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.js('resources/js/admin.js', 'public/js')
+.postCss('resources/css/admin.css', 'public/css').sourceMaps( true ,'source-map' );
+
+mix.js('resources/js/home.js', 'public/js')
+.sass('resources/sass/home.scss', 'public/css').sourceMaps( true ,'source-map' );
+
+

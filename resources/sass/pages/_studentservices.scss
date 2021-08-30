@@ -1,0 +1,44 @@
+.studentservices {
+  background-color: $gray-100;
+  padding: 8rem 0;
+}
+
+.service {
+  &__list {
+    color: $gray-800;
+    column-count: 2;
+    column-gap: 2rem;
+    margin: 0 auto;
+    list-style: none;
+    padding: 2rem;
+    font-weight: 400;
+
+    @include device(tab-port) {
+      column-count: 1;
+      column-gap: 0;
+      width: 80%;
+    }
+
+    @include device(phone) {
+      width: 100%;
+    }
+
+    > li {
+      > span {
+        color: $primary;
+        margin-right: 0.5rem;
+      }
+      padding: 0.7rem 1.2rem;
+      border: 1px solid $gray-500;
+      margin-bottom: 1rem;
+      border-radius: 0.5rem;
+      text-transform: uppercase;
+      background-color: $gray-100;
+
+      &::before {
+        content: '';
+        display: inline-block;
+      }
+    }
+  }
+}

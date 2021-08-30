@@ -1,0 +1,24 @@
+@import 'base/variables';
+@import '~bootstrap/scss/bootstrap';
+
+@import 'base/mixins';
+@import 'base/base';
+@import 'base/typography';
+
+@import 'components/form';
+@import 'components/owl.carousel';
+@import 'components/usercard';
+@import 'components/carousel';
+@import 'components/button';
+
+@import 'pages/footer';
+@import 'pages/header';
+@import 'pages/home';
+@import 'pages/about';
+@import 'pages/studentservices';
+@import 'pages/partners';
+@import 'pages/contact';
+@import 'pages/pointtest';
+@import 'pages/studentinfo';
+@import 'pages/studentlist';
+@import "~@fortawesome/fontawesome-free/css/all.css";

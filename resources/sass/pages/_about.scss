@@ -1,0 +1,18 @@
+.about {
+  padding: 8rem 0;
+  background-color: $gray-100;
+
+  .paragraph {
+    color: $gray-800;
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+      letter-spacing: 1.2;
+    }
+  }
+
+  .heading__h4 {
+    color: $gray-800;
+    font-weight: 600;
+    font-size: 2rem;
+  }
+}
