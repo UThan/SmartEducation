@@ -1,4 +1,3 @@
-<div class="card-body">
     <div class="form-row">
         <div class="col-md-6">
             <x-form-input name="name" label="Name" placeholder="Enter name" />
@@ -25,19 +24,19 @@
             <x-form-select name="institute" label="Institute" :options="$institutes" />
         </div>
         <div class="col-md-6">
-            <x-form-select name="targeted_city" label="Targeted City" :options="$targeted_cities" />
+            <x-form-select name="city" label="Targeted City" :options="$targeted_cities" />
         </div>
     </div>
 
     <div class="form-row">
         <div class="col-md-6">
             <x-form-select name="visa_status" label="Visa Status"
-                :options="[''=>'Select one', 'Not started'=>'Not started','Process start' => 'Process start','Pending' => 'Pending','Completed' => 'Completed']" />
+                :options="['Not started'=>'Not started','Process start' => 'Process start','Pending' => 'Pending','Completed' => 'Completed']" />
         </div>
 
         <div class="col-md-6">
             <x-form-select name="application_status" label="Application Status"
-                :options="[''=>'Select one', 'Not started'=>'Not started','Process start' => 'Process start','Pending' => 'Pending','Completed' => 'Completed']" />
+                :options="['Not started'=>'Not started','Process start' => 'Process start','Pending' => 'Pending','Completed' => 'Completed']" />
         </div>
     </div>
 
@@ -58,4 +57,9 @@
         <x-form-radio name="coe_status" value="Pending" label="Pending" />
         <x-form-radio name="coe_status" value="Unknown" label="Unknown" />
     </x-form-group>
-</div>
+
+    <x-form-group name="level_test" label="English level placement test" inline>
+        <x-form-radio name="level_test" value="Not started" label="Not started" />
+        <x-form-radio name="level_test" value="Finished" label="Finished" />
+        <x-form-radio name="level_test" value="Unknown" label="Unknown" />
+    </x-form-group>

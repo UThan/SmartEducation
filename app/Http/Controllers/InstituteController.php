@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Institute;
 use Illuminate\Http\Request;
+use PHPUnit\TextUI\XmlConfiguration\IniSetting;
 
 class InstituteController extends Controller
 {
@@ -25,7 +26,15 @@ class InstituteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $institute = new Institute;
+        $request->validate(
+            [
+                'name' => 'required',
+            ]
+        );
+        $institute->name = $request->name;
+        $institute->save();
+        return redirect()->back()->with('success', 'New institute is successfully added');
     }
 
     /**
@@ -36,7 +45,6 @@ class InstituteController extends Controller
      */
     public function show(Institute $institute)
     {
-        //
     }
 
     /**
@@ -46,9 +54,8 @@ class InstituteController extends Controller
      * @param  \App\Models\Institute  $institute
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Institute $institute)
+    public function update(Request $request, $id)
     {
-        //
     }
 
     /**
@@ -59,6 +66,7 @@ class InstituteController extends Controller
      */
     public function destroy(Institute $institute)
     {
-        //
+        $institute->delete();
+        return redirect()->back()->with('success', 'Successfully deleted');
     }
 }

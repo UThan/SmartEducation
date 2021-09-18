@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Payment;
 use App\Models\City;
 use App\Models\Institute;
 use App\Models\Course;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Collection;
 use Yajra\Datatables\Datatables;
 
@@ -17,7 +16,8 @@ class StudentController extends Controller
 
     public function index()
     {
-        return view('admin.student.index');
+        $students = Student::orderBy('id', 'desc')->paginate(10);
+        return view('admin.student.index', ['students' => $students]);
     }
 
 
@@ -26,6 +26,7 @@ class StudentController extends Controller
         $targeted_cities = $this->createAssociativeArray(City::all('id', 'name'));
         $courses = $this->createAssociativeArray(Course::all('id', 'name'));
         $institutes = $this->createAssociativeArray(Institute::all('id', 'name'));
+
         return view('admin.student.create', compact('institutes', 'courses', 'targeted_cities'));
     }
 
@@ -34,18 +35,15 @@ class StudentController extends Controller
         $student = Student::query();
         return Datatables::of($student)
             ->addColumn('action', function ($student) {
-                return '<div class="btn-group btn-group-sm">
-                <a href="/student/' . $student->id . '" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                <a href="/student/' . $student->id . '/edit" class="btn btn-warning"><i class="fas fa-edit"></i></a>                                
-              </div>';
+                return view('admin.student.action', ['student' => $student]);
             })
-            ->addColumn('active_status', function ($student) {
-                $html = $student->active_status ? 'Active' : 'Inactive';
-                return  $html;
-            })
+            ->editColumn('active_status', function ($student) {
+                $active = '<span class="badge bg-success">Active</span>';
+                $inactive = '<span class="badge bg-secondary">Inactive</span>';
+                return $student->active_status ? $active : $inactive;
+            })->rawColumns(['active_status'])
             ->make(true);
     }
-
 
     public function store(Request $request)
     {
@@ -56,15 +54,23 @@ class StudentController extends Controller
         $student->phone = $request->phone;
         $student->course_id = $request->course;
         $student->institute_id = $request->institute;
-        $student->city_id = $request->targeted_city;
+        $student->city_id = $request->city;
         $student->visa_status = $request->visa_status;
         $student->application_status = $request->application_status;
         $student->address = $request->address;
         $student->offer_status = $request->offer_status;
         $student->coe_status = $request->coe_status;
+        $student->level_test = $request->level_test;
         $student->active_status = true;
         $student->save();
-        return back()->with('success', 'New record created successfully');
+
+        $payment = new Payment;
+        $payment->type = 'deposit';
+        $payment->amount = $request->deposit_amount;
+        $payment->currency = $request->currency;
+        $student->payments()->save($payment);
+
+        return redirect()->route('student.index')->with('success', 'New student added successfully');
     }
 
     public function show($id)
@@ -84,29 +90,30 @@ class StudentController extends Controller
 
     public function update(Request $request, $id)
     {
-        $student = Student::find($id);
         $this->validateStudent($request);
+        $student = Student::find($id);
         $student->name = $request->name;
         $student->email = $request->email;
         $student->phone = $request->phone;
         $student->course_id = $request->course;
         $student->institute_id = $request->institute;
-        $student->city_id = $request->targeted_city;
+        $student->city_id = $request->city;
         $student->visa_status = $request->visa_status;
         $student->application_status = $request->application_status;
         $student->address = $request->address;
         $student->offer_status = $request->offer_status;
         $student->coe_status = $request->coe_status;
         $student->active_status = true;
+        $student->level_test = $request->level_test;
         $student->save();
-        return back()->with('success', 'Successfully updated');
+        return redirect()->route('student.index')->with('success', 'Successfully updated');
     }
 
     public function destroy($id)
     {
         $student = Student::find($id);
         $student->delete();
-        return redirect()->route('student.index')->with('success', 'Successfully deleted');;
+        return redirect()->route('student.index')->with('success', 'Successfully deleted');
     }
 
     private function validateStudent(Request $request)
@@ -117,12 +124,13 @@ class StudentController extends Controller
             'phone' => 'required',
             'course' => 'required',
             'institute' => 'required',
-            'targeted_city' => 'required',
+            'city' => 'required',
             'visa_status' => 'required',
             'application_status' => 'required',
             'address' => 'required',
             'offer_status' => 'required',
             'coe_status' => 'required',
+            'level_test' => 'required'
         ]);
     }
 

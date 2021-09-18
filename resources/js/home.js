@@ -1,59 +1,60 @@
-window.$ = window.jquery = require('jquery');
-require('./page/owl.carousel.min.js');
-
+import $ from "jquery";
+import "bootstrap";
+window.$ = window.jQuery = $;
+window.toastr = require("toastr");
+require("owl.carousel");
 
 window.onscroll = function () {
     scrollFunction();
-  };
-  
-  function scrollFunction() {
+};
+
+function scrollFunction() {
     if (window.scrollY > document.documentElement.clientHeight) {
-      $('.btn__top').show();
+        $(".btn__top").show();
     } else {
-      $('.btn__top').hide();
+        $(".btn__top").hide();
     }
-  }
-  
-  $('.btn__top').on('click', () => {
+}
+
+$(".btn__top").on("click", () => {
     window.scrollTo({
-      left: 0,
-      top: 0,
-      behavior: 'smooth',
+        left: 0,
+        top: 0,
+        behavior: "smooth",
     });
-  });
-  
-  $('.owl-carousel').owlCarousel({
+});
+
+$(".owl-carousel").owlCarousel({
     loop: true,
     nav: false,
     responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 1,
-      },
-      600: {
-        items: 2,
-      },
-      1200: {
-        items: 3,
-      },
-      1600: {
-        items: 4,
-      },
+        0: {
+            items: 1,
+        },
+        400: {
+            items: 1,
+        },
+        600: {
+            items: 2,
+        },
+        1200: {
+            items: 3,
+        },
+        1600: {
+            items: 4,
+        },
     },
-  });
-  
-  const Toast = Swal.mixin({
+});
+
+const Toast = Swal.mixin({
     toast: true,
-    position: 'top-end',
+    position: "top-end",
     showConfirmButton: false,
     timer: 3000,
-    width: '25rem',
+    width: "25rem",
     timerProgressBar: true,
     didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer);
-      toast.addEventListener('mouseleave', Swal.resumeTimer);
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
     },
-  });
-  
+});

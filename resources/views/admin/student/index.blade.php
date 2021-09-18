@@ -7,12 +7,19 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="card card-primary">
+            <div class="card card-secondary">
                 <div class="card-header">
-                    <h3 class="card-title">Student Table</h3>
+                    <div class="card-title">
+                        <h5 class="m-1">Student list</h5>
+                    </div>
+                    <div class="card-tools">
+                        <a href="{{ route('student.create') }}" class="btn btn-sm btn-success"> <i
+                                class="fas fa-plus mr-1"></i> New student</a>
+                    </div>
                 </div>
+
                 <div class="card-body">
-                    <table class="table table-hover" id="users-table">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -21,57 +28,43 @@
                                 <th>Status</th>
                                 <th>Visa</th>
                                 <th>Application</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            @foreach ($students as $student)
+                                <tr>
+                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $student->name }}</td>
+                                    <td>{{ $student->email }}</td>
+                                    <td>
+                                        @if ($student->active_status)
+                                            <span class="badge bg-success">Active</span>
+                                        @else
+                                            <span class="badge bg-secondary">Inactive</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $student->visa_status }}</td>
+                                    <td>{{ $student->application_status }}</td>
+                                    <td>@include('admin.student.action')</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
+
+                <!-- /.card-body -->
+                @if ($students->hasPages())
+                    <div class="card-footer">
+                        {{ $students->links() }}
+                    </div>
+                @endif
+
+
             </div>
         </div>
     </div>
 
-
-    @push('scripts')
-        <script>
-            $(function() {
-                $('#users-table').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    responsive: true,
-                    autoWidth: false,
-                    ajax: '{!! route('api.student') !!}',
-                    columns: [{
-                            data: 'id',
-                            name: 'id'
-                        },
-                        {
-                            data: 'name',
-                            name: 'name'
-                        },
-                        {
-                            data: 'email',
-                            name: 'email'
-                        },
-                        {
-                            data: 'active_status',
-                            name: 'status'
-                        },
-                        {
-                            data: 'visa_status',
-                            name: 'visa_status'
-                        },
-                        {
-                            data: 'application_status',
-                            name: 'application_status'
-                        },
-                        {
-                            data: 'action',
-                            name: 'action'
-                        }
-                    ]
-                });
-            });
-        </script>
-    @endpush
+    @include('admin.payment.create')
 
 </x-admin-dashboard>

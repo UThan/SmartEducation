@@ -16,11 +16,11 @@
                 <!-- /.card-header -->
                 <!-- form start -->
 
-                <x-form :action="route('student.update', $student->id)" method='POST'>
-                    @method('PUT')
+                <x-form :action="route('student.update', $student->id)" method='PUT'>
                     @bind($student)
-
-                    @include('admin.student.form')
+                    <div class="card-body">
+                        @include('admin.student.form')
+                    </div>
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Update</button>

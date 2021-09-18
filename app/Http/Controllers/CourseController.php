@@ -25,7 +25,15 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $course = new Course;
+        $request->validate(
+            [
+                'name' => 'required',
+            ]
+        );
+        $course->name = $request->name;
+        $course->save();
+        return redirect()->back()->with('success', 'New course is successfully added');
     }
 
     /**
@@ -59,6 +67,7 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $course->delete();
+        return redirect()->back()->with('success', 'Successfully deleted');
     }
 }

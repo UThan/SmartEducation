@@ -26,6 +26,7 @@ class CreateStudentsTable extends Migration
             $table->foreignId('course_id')->nullable();
             $table->foreignId('institute_id')->nullable();
             $table->foreignId('city_id')->nullable();
+            $table->enum('level_test', ['Not started', 'Finished', 'Unknown']);
             $table->boolean('active_status');
             $table->timestamps();
         });

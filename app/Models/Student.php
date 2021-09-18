@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Transaction;
+use App\Models\Payment;
 use App\Models\City;
 use App\Models\Course;
 use App\Models\Institute;
@@ -13,9 +13,9 @@ class Student extends Model
 {
     use HasFactory;
 
-    public function transactions()
+    public function payments()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Payment::class);
     }
 
     public function course()

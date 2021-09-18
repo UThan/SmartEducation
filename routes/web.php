@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,22 +26,19 @@ Route::view('/service', 'pages.service')->name('service');
 Route::view('/partner', 'pages.partner')->name('partner');
 Route::view('/contact', 'pages.contact')->name('contact');
 
-Route::get('/dashboard', function () {
-    return redirect('/student')->with('success', 'Welcome back');
-})->middleware(['auth'])->name('dashboard');
-
-
-
-
 
 Route::middleware(['auth'])->group(function () {
+
+    Route::redirect('/dashboard', '/student')->name('dashboard');
+    Route::get('/setting', SettingController::class)->name('setting');
+
     Route::resource('student', StudentController::class);
 
     Route::apiResources([
         'city' => CityController::class,
         'institute' => InstituteController::class,
         'course' => CourseController::class,
-        'transaction' => TransactionController::class,
+        'payment' => PaymentController::class,
     ]);
 });
 

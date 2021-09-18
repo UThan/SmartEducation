@@ -25,7 +25,15 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $city = new City;
+        $request->validate(
+            [
+                'name' => 'required',
+            ]
+        );
+        $city->name = $request->name;
+        $city->save();
+        return redirect()->back()->with('success', 'New city is successfully added');
     }
 
     /**
@@ -59,6 +67,7 @@ class CityController extends Controller
      */
     public function destroy(City $city)
     {
-        //
+        $city->delete();
+        return redirect()->back()->with('success', 'Successfully deleted');
     }
 }
