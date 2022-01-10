@@ -31,18 +31,22 @@
     <div class="form-row">
         <div class="col-md-6">
             <x-form-select name="visa_status" label="Visa Status"
-                :options="['Not started'=>'Not started','Process start' => 'Process start','Pending' => 'Pending','Completed' => 'Completed']" />
+                :options="['Not started'=>'Not started','Process started' => 'Process started','Pending' => 'Pending','Completed' => 'Completed']" />
         </div>
 
         <div class="col-md-6">
             <x-form-select name="application_status" label="Application Status"
-                :options="['Not started'=>'Not started','Process start' => 'Process start','Pending' => 'Pending','Completed' => 'Completed']" />
+                :options="['Not started'=>'Not started','Process started' => 'Process started','Pending' => 'Pending','Completed' => 'Completed']" />
         </div>
     </div>
 
     <div class="form-row">
         <div class="col">
             <x-form-textarea name='address' label='Current Address' row='2' />
+        </div>
+
+        <div class="col">
+            <x-form-textarea name='description' label='Description' row='2' />
         </div>
     </div>
 

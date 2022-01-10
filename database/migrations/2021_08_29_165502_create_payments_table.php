@@ -13,7 +13,7 @@ class CreatePaymentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payment', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_id')->constrained()
                 ->onUpdate('cascade')

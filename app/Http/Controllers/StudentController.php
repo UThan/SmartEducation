@@ -54,6 +54,7 @@ class StudentController extends Controller
         $student->phone = $request->phone;
         $student->course_id = $request->course;
         $student->institute_id = $request->institute;
+        $student->description = $request->description;
         $student->city_id = $request->city;
         $student->visa_status = $request->visa_status;
         $student->application_status = $request->application_status;
@@ -97,6 +98,7 @@ class StudentController extends Controller
         $student->phone = $request->phone;
         $student->course_id = $request->course;
         $student->institute_id = $request->institute;
+        $student->description = $request->description;
         $student->city_id = $request->city;
         $student->visa_status = $request->visa_status;
         $student->application_status = $request->application_status;

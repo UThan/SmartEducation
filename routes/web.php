@@ -20,12 +20,7 @@ use App\Http\Controllers\SettingController;
 */
 
 
-Route::view('/', 'home')->name('home');
-Route::view('/about', 'pages.about')->name('about');
-Route::view('/service', 'pages.service')->name('service');
-Route::view('/partner', 'pages.partner')->name('partner');
-Route::view('/contact', 'pages.contact')->name('contact');
-
+Route::redirect('/', '/student')->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
 

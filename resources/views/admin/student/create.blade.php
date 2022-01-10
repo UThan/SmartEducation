@@ -9,7 +9,7 @@
         <div class="col">
 
             <!-- general form elements -->
-            <div class="card card-primary">
+            <div class="card card-secondary">
                 <div class="card-header">
                     <div class="card-title">
                         <h5 class="mb-0">Student registeration</h5>

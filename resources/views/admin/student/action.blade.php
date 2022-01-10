@@ -1,6 +1,6 @@
-<button type="button" class="btn btn-text btn-sm" data-toggle="dropdown">
+<a href="#" class="text-muted" data-toggle="dropdown">
     <span class="sr-only">Toggle Dropdown</span><i class="fas fa-ellipsis-v"></i>
-</button>
+</a>
 <x-form :action="route('student.destroy', $student->id)" method="delete">
     <div class=" dropdown-menu" role="menu">
         <a class="dropdown-item" href="{{ route('student.show', $student->id) }}"><i

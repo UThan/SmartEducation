@@ -18,16 +18,16 @@
                     </div>
                 </div>
 
-                <div class="card-body">
+                <div class="card-body p-0">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
-                                <th>Email</th>
-                                <th>Status</th>
+                                <th>Email</th>                                
                                 <th>Visa</th>
                                 <th>Application</th>
+                                <th style="width: 35rem">Description</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -36,16 +36,10 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $student->name }}</td>
-                                    <td>{{ $student->email }}</td>
-                                    <td>
-                                        @if ($student->active_status)
-                                            <span class="badge bg-success">Active</span>
-                                        @else
-                                            <span class="badge bg-secondary">Inactive</span>
-                                        @endif
-                                    </td>
+                                    <td>{{ $student->email }}</td>                                   
                                     <td>{{ $student->visa_status }}</td>
                                     <td>{{ $student->application_status }}</td>
+                                    <td>{{ $student->description }}</td>
                                     <td>@include('admin.student.action')</td>
                                 </tr>
                             @endforeach
