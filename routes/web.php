@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\Comment;
+use App\Http\Livewire\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/post', Post::class)->name('post');
+Route::get('/comment', Comment::class)->name('comment');
