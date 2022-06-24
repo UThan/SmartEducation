@@ -15,7 +15,7 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('name',20);
+            $table->string('name',50);
             $table->string('email',50);
             $table->string('phone',50);
             $table->text('address')->nullable();
@@ -24,7 +24,7 @@ class CreateStudentsTable extends Migration
             $table->enum('offer_status',['Unknown','Received','Pending'])->nullable();
             $table->enum('coe_status',['Unknown','Received','Pending'])->nullable();
             $table->foreignId('course_id',20)->nullable();
-            $table->foreignId('instutute_id',20)->nullable();
+            $table->foreignId('institute_id',20)->nullable();
             $table->foreignId('targeted_city_id',20)->nullable();		
             $table->timestamps();
         });

@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Livewire\Comment;
-use App\Http\Livewire\Post;
+use App\Http\Livewire\Student\All as AllStudent;
+use App\Http\Livewire\Student\Create as CreateStudent;;
+use App\Http\Livewire\Student\Edit as EditStudent;
+use App\Http\Livewire\Student\View as ViewStudent;
+use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,5 +22,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/post', Post::class)->name('post');
-Route::get('/comment', Comment::class)->name('comment');
+
+Route::prefix('student')->name('student.')->group(function(){
+    Route::get('/', AllStudent::class)->name('all');
+    Route::get('/create', CreateStudent::class)->name('create');
+    Route::get('/view/{id}', ViewStudent::class)->name('view');
+    Route::get('/edit/{id}', EditStudent::class)->name('edit');
+});
+
