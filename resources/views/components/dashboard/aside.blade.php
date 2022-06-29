@@ -70,7 +70,7 @@
 
     <ul class="menu-inner py-1">
       <!-- Dashboard -->
-      <li class="menu-item active">
+      <li class="menu-item">
         <a href="" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div data-i18n="Analytics">Dashboard</div>
@@ -81,23 +81,15 @@
       <li class="menu-header small text-uppercase"><span class="menu-header-text">Student</span></li>
 
 
-      <li class="menu-item">
-        <a href="" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-layout"></i>
+      <li class="menu-item {{request()->routeIs('student.*') ? 'open' : ''}}">
+        <a href="#" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bxs-user-detail"></i>
           <div data-i18n="Layouts">Student</div>
         </a>
 
         <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="layouts-without-menu.html" class="menu-link">
-              <div data-i18n="Without menu">List</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="layouts-without-navbar.html" class="menu-link">
-              <div data-i18n="Without navbar">Register</div>
-            </a>
-          </li>          
+          <x-dashboard.menuitem route='student.all' name='List'/>
+          <x-dashboard.menuitem route='student.create' name='Register'/>        
         </ul>
       </li>
      
@@ -108,7 +100,7 @@
       <!-- Partners -->
       <li class="menu-item">
         <a href="" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-layout"></i>
+          <i class="menu-icon tf-icons bx bxs-id-card"></i>
           <div data-i18n="Layouts">Partners</div>
         </a>
 
@@ -130,7 +122,7 @@
       <!-- Team -->
       <li class="menu-item">
         <a href="" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-layout"></i>
+          <i class="menu-icon tf-icons bx bxs-group"></i>
           <div data-i18n="Layouts">Team</div>
         </a>
 
@@ -151,7 +143,7 @@
       <!-- Payment -->
       <li class="menu-item">
         <a href="cards-basic.html" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-collection"></i>
+          <i class="menu-icon tf-icons bx bx-credit-card"></i>
           <div data-i18n="Basic">Payments</div>
         </a>
       </li>
