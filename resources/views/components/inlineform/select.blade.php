@@ -1,12 +1,11 @@
 @props(['label','data','model','name','placeholder'])
-<div class="row ">   
-    <div class="col mb-3">
-
-      @isset($label)
-        <label class="form-label" for="{{$name}}">{{$label}}</label>
-      @endisset
-
-      <div class="input-group mt-1">
+<div class="row mb-3">
+    @isset($label)
+    <label class="col-sm-2 col-form-label" for="{{$name}}">{{$label}}</label>
+    @endisset
+    
+    <div class="col-sm-10">
+      <div class="input-group">
         <select class="form-select" id="{{ $name }}" wire:model='{{ $name }}'>
 
             @isset($placeholder)
