@@ -10,7 +10,7 @@ class All extends Component
 {
     use WithPagination;    
     protected $paginationTheme = 'bootstrap';
-    public $column = '10', $search;
+    public $column = '10', $search, $student_id;
 
     public function render()
     {
@@ -19,9 +19,17 @@ class All extends Component
         return view('livewire.student.all',compact('students'));
     }    
 
-    public function delete($id)
-    {
-        Student::destroy($id);
-        session()->flash('success','successfully deleted');
+    public function delete()
+    {        
+         Student::destroy($this->student_id);
+         session()->flash('success','successfully deleted');
+         $this->emit('hideModal','deleteConfirmation');
     }
+
+    public function confirmDelete($id)
+    {
+        $this->student_id = $id;
+    }
+
+    
 }

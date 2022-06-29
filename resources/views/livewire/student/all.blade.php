@@ -32,7 +32,7 @@
                         </td>
                         <td>{{ $student->email }}</td>
                         <td>{{ $student->phone }}</td>
-                        <td>{!!$student->application_status!!} </td>
+                        <td><span class="badge bg-label-success me-1">{{ $student->status }}</span></td>
                         <td><span class="badge bg-label-primary me-1" data-bs-toggle="tooltip" data-bs-offset="0,4"
                                 data-bs-placement="bottom" data-bs-html="true"
                                 title="<i class='bx bx-heart bx-xs'></i> <span>Tooltip on bottom</span>">2</span></td>
@@ -40,7 +40,7 @@
                             <x-table.action>
                                 <a class="dropdown-item" href="{{ route('student.edit',['id' => $student->id ]) }}"><i
                                         class="bx bx-edit-alt me-1"></i> Edit</a>
-                                <a class="dropdown-item" href="#" wire:click='delete({{ $student->id }})'><i
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" wire:click='confirmDelete({{$student->id}})' data-bs-target="#deleteConfirmation"><i
                                         class="bx bx-trash me-1"></i> Delete</a>
                                 <a class="dropdown-item" href="{{ route('student.view',['id' => $student->id ]) }}"><i class="bx bx-show-alt me-1"></i>View</a>
                             </x-table.action>
@@ -58,6 +58,9 @@
         </div>
     </div>
     <!--/ Basic Bootstrap Table -->
+
+
+    <x-ui.deleteconfirmmodal id='deleteConfirmation' />     
 
 
 </div>

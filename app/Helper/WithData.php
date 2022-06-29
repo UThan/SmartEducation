@@ -25,6 +25,13 @@ trait WithData
         "Pending" => "Pending"
     ];
 
+    public $status = [
+        "Active" => "Active",
+        "Deactivated" => "Deactivated",
+        "Completed" => "Completed",
+        "Postponed" => "Postponed",
+    ];
+
     public $offer_status = [
         "Unknown" => "Unknown",
         "Received" => "Received",
@@ -35,6 +42,11 @@ trait WithData
         "MMK" => "MMK",
         "USD" => "USD",
         "AUD" => "AUD"
+    ];
+
+    public $paymenttypes = [
+        "Tutuion fees" => "Tution Fees",
+        "Deposit" => "Deposit",
     ];
     
 }

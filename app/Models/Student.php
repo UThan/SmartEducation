@@ -10,25 +10,21 @@ class Student extends Model
 {
     use HasFactory;
 
-    protected function getApplicationStatusAttribute($value){
-       switch ($value) {
-        case 'Process start':
-            return '<span class="badge bg-label-info me-1">'.$value.'</span>';
-            break;
-        case 'Completed':
-            return '<span class="badge bg-label-success me-1">'.$value.'</span>';
-            break;
-        case 'Not started':
-            return '<span class="badge bg-label-secondary me-1">'.$value.'</span>';
-            break; 
-        default:
-            return '<span class="badge bg-label-warning me-1">'.$value.'</span>';
-            break;
-       }
-    }
+    protected $attributes = [
+        'status' => 'Active',
+        'visa_status' => 'Not started',
+        'application_status'=> 'Not started',
+        'coe_status'=> 'Unknown',
+        'offer_status'=> 'Unknown',
+    ];   
+   
 
     public function payments(){
         return $this->hasMany(Payment::class);
+    }
+
+    public function descriptions(){
+        return $this->hasMany(Description::class);
     }
 
     public function notes(){
