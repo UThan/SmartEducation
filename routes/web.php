@@ -7,6 +7,9 @@ use App\Http\Livewire\Student\View as ViewStudent;
 use App\Http\Livewire\Partner\All as AllPartner;
 use App\Http\Livewire\Partner\Create as CreatePartner;
 use App\Http\Livewire\Partner\Edit as EditPartner;
+use App\Http\Livewire\member\All as AllMember;
+use App\Http\Livewire\member\Create as CreateMember;
+use App\Http\Livewire\member\Edit as EditMember;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
@@ -37,5 +40,11 @@ Route::prefix('partner')->name('partner.')->group(function(){
     Route::get('/', AllPartner::class)->name('all');    
     Route::get('/create', CreatePartner::class)->name('create');
     Route::get('/edit/{id}', EditPartner::class)->name('edit');
+});
+
+Route::prefix('member')->name('member.')->group(function(){
+    Route::get('/', AllMember::class)->name('all');    
+    Route::get('/create', CreateMember::class)->name('create');
+    Route::get('/edit/{id}', EditMember::class)->name('edit');
 });
 

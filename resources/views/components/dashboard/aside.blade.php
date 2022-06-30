@@ -58,7 +58,7 @@
             </g>
           </svg>
         </span>
-        <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+        <span class="app-brand-text demo menu-text fw-bolder ms-2">Smart edu</span>
       </a>
 
       <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -81,7 +81,7 @@
       <li class="menu-header small text-uppercase"><span class="menu-header-text">Student</span></li>
 
 
-      <li class="menu-item {{request()->routeIs('student.*') ? 'open' : ''}}">
+      <li class="menu-item {{request()->routeIs('student.*') ? 'open active' : ''}}">
         <a href="#" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bxs-user-detail"></i>
           <div data-i18n="Layouts">Student</div>
@@ -98,7 +98,7 @@
       <li class="menu-header small text-uppercase"><span class="menu-header-text">Manage</span></li>
 
       <!-- Partners -->
-      <li class="menu-item {{request()->routeIs('partner.*') ? 'open' : ''}}">
+      <li class="menu-item {{request()->routeIs('partner.*') ? 'open active' : ''}}">
         <a href="" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bxs-id-card"></i>
           <div data-i18n="Layouts">Partners</div>
@@ -111,35 +111,20 @@
       </li>
 
 
-      <!-- Team -->
-      <li class="menu-item">
+      <!-- member -->
+      <li class="menu-item {{request()->routeIs('member.*') ? 'open active' : ''}}">
         <a href="" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bxs-group"></i>
-          <div data-i18n="Layouts">Team</div>
+          <div data-i18n="Layouts">Member</div>
         </a>
 
         <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="layouts-without-menu.html" class="menu-link">
-              <div data-i18n="Without menu">List</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="layouts-without-navbar.html" class="menu-link">
-              <div data-i18n="Without navbar">Add New</div>
-            </a>
-          </li>          
+          <x-dashboard.menuitem route='member.all' name='List'/>
+          <x-dashboard.menuitem route='member.create' name='Add new'/>              
         </ul>
       </li>
 
-      <!-- Payment -->
-      <li class="menu-item">
-        <a href="cards-basic.html" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-credit-card"></i>
-          <div data-i18n="Basic">Payments</div>
-        </a>
-      </li>
-
+      
       <!-- Settings -->
       <li class="menu-header small text-uppercase"><span class="menu-header-text">Settings</span></li>
 

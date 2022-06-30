@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTeamsTable extends Migration
+class CreateSalaryTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateTeamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('teams', function (Blueprint $table) {
+        Schema::create('salary_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name',20);
-		    $table->foreignId('position_id',20);
-		    $table->integer('salary');
-            $table->timestamps();
+            $table->string('name');
         });
     }
 
@@ -29,6 +26,6 @@ class CreateTeamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('teams');
+        Schema::dropIfExists('salary_types');
     }
 }
