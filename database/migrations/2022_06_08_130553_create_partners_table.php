@@ -15,14 +15,13 @@ class CreatePartnersTable extends Migration
     {
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
-            $table->string('name',20);
+            $table->string('name',50);
             $table->enum('type',['official','partner','university','agent']);
-            $table->timestamp('register_date');
-            $table->integer('anual_tution_fees');
+            $table->integer('annual_tution_fees');
             $table->boolean('scholarship_offer');
             $table->integer('commission_rate');
             $table->date('agreement_date');
-            $table->date('expired_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }

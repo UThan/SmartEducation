@@ -38,15 +38,31 @@ trait WithData
         "Pending" => "Pending"
     ];
 
+    //payment
+
     public $currencies = [
         "MMK" => "MMK",
         "USD" => "USD",
         "AUD" => "AUD"
     ];
 
-    public $paymenttypes = [
+    //partner
+
+    public $payment_types = [
         "Tutuion fees" => "Tution Fees",
         "Deposit" => "Deposit",
+    ];
+
+    public $partner_types = [
+        "official" => "Official",
+        "partner" => "Partner",
+        "university" => "University",
+        "agent" => "Agent",
+    ];
+
+    public $boolean = [
+        true => "Yes",
+        false => "No",
     ];
     
 }

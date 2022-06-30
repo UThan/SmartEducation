@@ -98,23 +98,15 @@
       <li class="menu-header small text-uppercase"><span class="menu-header-text">Manage</span></li>
 
       <!-- Partners -->
-      <li class="menu-item">
+      <li class="menu-item {{request()->routeIs('partner.*') ? 'open' : ''}}">
         <a href="" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bxs-id-card"></i>
           <div data-i18n="Layouts">Partners</div>
         </a>
 
         <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="layouts-without-menu.html" class="menu-link">
-              <div data-i18n="Without menu">View</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="layouts-without-navbar.html" class="menu-link">
-              <div data-i18n="Without navbar">Add New</div>
-            </a>
-          </li>          
+            <x-dashboard.menuitem route='partner.all' name='View'/>
+            <x-dashboard.menuitem route='partner.create' name='Create new'/>      
         </ul>
       </li>
 

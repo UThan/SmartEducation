@@ -9,6 +9,7 @@ class Partner extends Model
 {
     use HasFactory;
 
+    protected $attributes = ['scholarship_offer' => false];
     public function courses(){
         return $this->belongsToMany(Course::class,'offered_courses');
     }
