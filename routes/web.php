@@ -11,6 +11,11 @@ use App\Http\Livewire\member\All as AllMember;
 use App\Http\Livewire\member\Create as CreateMember;
 use App\Http\Livewire\member\Edit as EditMember;
 use Illuminate\Routing\RouteGroup;
+use App\Http\Livewire\Auth\Login;
+use App\Http\Livewire\Auth\Register;
+use App\Http\Livewire\Comment;
+use App\Http\Livewire\Post;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,23 +33,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/register', Register::class)->name('register');
+Route::get('/login', Login::class)->name('login');
 
-Route::prefix('student')->name('student.')->group(function(){
-    Route::get('/', AllStudent::class)->name('all');
-    Route::get('/create', CreateStudent::class)->name('create');
-    Route::get('/view/{id}', ViewStudent::class)->name('view');
-    Route::get('/edit/{id}', EditStudent::class)->name('edit');
+Route::middleware('auth')->group(function(){
+    Route::prefix('student')->name('student.')->group(function(){
+        Route::get('/', AllStudent::class)->name('all');
+        Route::get('/create', CreateStudent::class)->name('create');
+        Route::get('/view/{id}', ViewStudent::class)->name('view');
+        Route::get('/edit/{id}', EditStudent::class)->name('edit');
+    });
+    
+    Route::prefix('partner')->name('partner.')->group(function(){
+        Route::get('/', AllPartner::class)->name('all');    
+        Route::get('/create', CreatePartner::class)->name('create');
+        Route::get('/edit/{id}', EditPartner::class)->name('edit');
+    });
+    
+    Route::prefix('member')->name('member.')->group(function(){
+        Route::get('/', AllMember::class)->name('all');    
+        Route::get('/create', CreateMember::class)->name('create');
+        Route::get('/edit/{id}', EditMember::class)->name('edit');
+    });
+
+    Route::get('/logout',function(){
+        Auth::logout();
+        return redirect()->route('login');
+    })->name('logout');
 });
 
-Route::prefix('partner')->name('partner.')->group(function(){
-    Route::get('/', AllPartner::class)->name('all');    
-    Route::get('/create', CreatePartner::class)->name('create');
-    Route::get('/edit/{id}', EditPartner::class)->name('edit');
-});
-
-Route::prefix('member')->name('member.')->group(function(){
-    Route::get('/', AllMember::class)->name('all');    
-    Route::get('/create', CreateMember::class)->name('create');
-    Route::get('/edit/{id}', EditMember::class)->name('edit');
-});
 
