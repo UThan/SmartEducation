@@ -19,8 +19,10 @@ class DatabaseSeeder extends Seeder
             InstituteSeeder::class,
             CitySeeder::class,
             PositionSeeder::class,
-            DataSeeder::class,
+            // DataSeeder::class,
             SalaryTypeSeeder::class,
+            RoleSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }

@@ -23,6 +23,7 @@ class StudentFactory extends Factory
             'offer_status'=> $this->faker->randomElement(['Unknown','Received','Pending']),
             'coe_status'=> $this->faker->randomElement(['Unknown','Received','Pending']),
             'course_id'=> $this->faker->numberBetween(1,10),
+            'level_test'=> $this->faker->boolean(60),
             'institute_id'=> $this->faker->numberBetween(1,4),
             'targeted_city_id'=> $this->faker->numberBetween(1,3),            
         ];

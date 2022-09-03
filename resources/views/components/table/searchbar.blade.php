@@ -14,14 +14,14 @@
         </div>
     </div>
     <div class="col-md-10">
-        <div
-            class="text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0">
+        <div class="text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0">
             
             <div class="mx-2">
-               <input type="search" class="form-control" placeholder="Search.." wire:model='search'>
+               <input type="search" class="form-control" placeholder="Search.." wire:model='search'/>              
             </div>            
-                {{ $slot }}                           
-            </a>  
+            
+            {{ $slot }}                          
+            
         </div>
     </div>
 </div>

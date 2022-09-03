@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\Partner;
 use App\Models\Student;
 use App\Models\member;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DataSeeder extends Seeder

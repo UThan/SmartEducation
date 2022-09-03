@@ -26,6 +26,7 @@ class Create extends Component
         'student.application_status' => 'required',
         'student.offer_status' => 'required',
         'student.coe_status' => 'required',
+        'student.level_test' => 'required',
         'student.targeted_city_id' => 'required',
         'student.course_id' => 'required',
         'student.institute_id' => 'required',

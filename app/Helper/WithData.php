@@ -38,6 +38,11 @@ trait WithData
         "Pending" => "Pending"
     ];
 
+    public $level_test = [
+        false => "Not Started" ,
+        true => "Finished",
+    ];    
+
     //payment
 
     public $currencies = [
@@ -49,7 +54,7 @@ trait WithData
     //partner
 
     public $payment_types = [
-        "Tutuion fees" => "Tution Fees",
+        "Tution fees" => "Tution Fees",
         "Deposit" => "Deposit",
     ];
 

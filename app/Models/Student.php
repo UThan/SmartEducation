@@ -16,6 +16,7 @@ class Student extends Model
         'application_status'=> 'Not started',
         'coe_status'=> 'Unknown',
         'offer_status'=> 'Unknown',
+        'level_test' => false,
     ];   
    
 

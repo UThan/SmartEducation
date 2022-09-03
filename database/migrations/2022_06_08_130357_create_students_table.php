@@ -24,6 +24,7 @@ class CreateStudentsTable extends Migration
             $table->enum('application_status',['Not started','Process start','Pending','Completed'])->nullable();
             $table->enum('offer_status',['Unknown','Received','Pending'])->nullable();
             $table->enum('coe_status',['Unknown','Received','Pending'])->nullable();
+            $table->boolean('level_test')->default(true);
             $table->foreignId('course_id')->nullable();
             $table->foreignId('institute_id')->nullable();
             $table->foreignId('targeted_city_id')->nullable();		

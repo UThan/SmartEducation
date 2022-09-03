@@ -60,11 +60,15 @@
                                         <td class="pe-3">Offer:</td>
                                         <td>{{ $student->offer_status }}</td>
                                     </tr>
+                                    <tr>
+                                        <td class="pe-3">Level Test:</td>
+                                        <td>{{ $student->level_test ? "Finished" : "Not Started" }}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="col-xl-6 col-md-12 col-sm-7 col-12">
-                            <h6 class="pb-2">Institute::</h6>
+                            <h6 class="pb-2">Targeted Institute:</h6>
                             <table>
                                 <tbody>
                                     <tr>
@@ -138,11 +142,13 @@
                         <span class="d-flex align-items-center justify-content-center text-nowrap"><i
                                 class="bx bx-plus bx-xs me-3"></i>Add Description</span>
                     </a>
-                    <a href="#" class="btn btn-primary d-grid w-100" data-bs-toggle="modal"
+                    @can('make-payment')
+                        <a href="#" class="btn btn-primary d-grid w-100" data-bs-toggle="modal"
                         data-bs-target="#addPaymentModal">
-                        <span class="d-flex align-items-center justify-content-center text-nowrap"><i
+                                <span class="d-flex align-items-center justify-content-center text-nowrap"><i
                                 class="bx bx-dollar bx-xs me-3"></i>Make Payment</span>
-                    </a>
+                        </a>
+                    @endcan 
                 </div>
             </div> 
             

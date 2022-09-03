@@ -24,7 +24,8 @@
             <x-inlineform.radiogroup label='Visa Status' name='student.visa_status' :data="$visa_status"/>
             <x-inlineform.radiogroup label='Application Status' name='student.application_status' :data="$application_status"/>
             <x-inlineform.radiogroup label='Offer Status' name='student.offer_status' :data="$offer_status"/>
-            <x-inlineform.radiogroup label='COE Status' name='student.coe_status' :data="$coe_status"/>              
+            <x-inlineform.radiogroup label='COE Status' name='student.coe_status' :data="$coe_status"/>   
+            <x-inlineform.radiogroup label='Level Test' name='student.level_test' :data="$level_test"/>           
 
             <hr>
 

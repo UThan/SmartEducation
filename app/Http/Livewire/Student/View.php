@@ -29,7 +29,9 @@ class View extends Component
     protected $rules = [
         'payment.type' => 'required',
         'payment.amount' => 'required',      
-        'payment.currency' => 'required',    
+        'payment.currency' => 'required',   
+        'description.title' => 'required',
+        'description.body' => 'required',  
     ];
     
 
@@ -50,8 +52,9 @@ class View extends Component
         $this->validate($this->paymentRules); 
         $this->student->payments()->save($this->payment);        
         $this->emit('hideModal','addPaymentModal');
-        session()->flash('success','successfully added');   
-        $this->student->refresh();    
+        session()->flash('success','successfully added');    
+        $this->student->refresh(); 
+        $this->payment = new Payment();       
     }
 
     public function createDescription()
@@ -61,12 +64,13 @@ class View extends Component
         $this->emit('hideModal','addDescriptionModal');
         session()->flash('success','successfully added');
         $this->student->refresh(); 
+        $this->description = new Description();
     }
 
     public function deletePayment($id)
     {
         Payment::destroy($id);
-        session()->flash('success','Payment Removed');
+        session()->flash('success','Payment Removed');        
         $this->student->refresh(); 
     }
 
